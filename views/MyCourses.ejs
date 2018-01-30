@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Courses</title>
+  <!-- including the header information -->
+<% include Head.ejs %>
+</head>
+
+<body>
+  <!-- including the navigation bar -->
+<% include Navbar.ejs %>
+
+<!-- script to make the current tab active -->
+<script>
+var x = document.getElementById("mycourses");
+x.className = "active";
+</script>
+
+
+<!--  here it will include about the courses of professor...........-->
+<!--  My Courses Tab in Professor-->
+<div id="menu2">
+<div class="w3-box-center-table">
+<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable">
+    <thead>
+    <tr class="w3-light-grey">
+      <th class="w3-grey">Course ID</th>
+      <th class="w3-grey">Course Name</th>
+      <th class="w3-grey">Credits</th>
+    </tr>
+    </thead>
+
+    <% if(data) {%>
+      <% for(var i=0; i < data.course_list.length; i++) { %>
+    <tr>
+      <form method="get" name="form">
+      <td><a href='MyCourses/<%= data.course_list[i].course %>/StudentHome'><%= data.course_list[i].course %></a></td>
+      <td><a href='MyCourses/<%= data.course_list[i].course %>/StudentHome'><%= data.course_list[i].course_name %></a></td>
+      <td><p class="w3-input w3-border w3-third" name="std_ID"><%= data.course_list[i].credit %></p></td>
+      </form>
+    </tr>
+    <% } %>
+    <% } %>
+</table>
+</div>
+
+
+
+<br><br>
+<!-- Including the footer information -->
+<% include Footer.ejs %>
+
+</body>
+</html>
